@@ -5,8 +5,12 @@
 
 {% block content %}
 
-  <div class="container">
+  {% raw %}
 
+  <div class="container" ng-controller="BeerController">
+    <p>
+      {{ test }}
+    </p>
   <div class="add-beer">
 
     <h1 class="text-center">Add a Beer</h1>
@@ -42,11 +46,19 @@
           <th>ABV</th>
         </tr>
       </thead>
-      <tbody id="all-beers"></tbody>
+        <tbody id="all-lamas" >
+          <tr ng-repeat="beer in beers">
+            <td>{{beer.name}}</td>
+            <td>{{beer.type}}</td>
+            <td>{{beer.abv}}</td>
+          </tr>
+        </tbody>
     </table>
   </div>
 
 
   </div>
+
+  {% endraw %}
 
 {% endblock %}
