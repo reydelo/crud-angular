@@ -1,7 +1,15 @@
-app.factory('myFactory', ['$http', function($http){
- var beers = {};
- beers.getBeers = function() {
+app.factory('HTTPfactory', ['$http', function($http){
+ var obj = {};
+
+ //get request
+ obj.get = function() {
    return $http.get('api/v1/beers');
  };
- return beers;
+
+ //post request
+ obj.post = function(payload) {
+   return $http.post('api/v1/beers', payload);
+ }
+
+ return obj;
 }]);

@@ -1,6 +1,8 @@
-app.controller('beerController', function($scope, myFactory) {
+app.controller('beerController', function($scope, HTTPfactory) {
+
+  // get request
  function getData() {
-   myFactory.getBeers().success(function(response){
+   HTTPfactory.get().success(function(response){
      $scope.beers = response;
    })
    .error(function(error){
@@ -8,4 +10,23 @@ app.controller('beerController', function($scope, myFactory) {
    });
  }
  getData();
+
+ //post request
+ function postData(payload) {
+   HTTPfactory.post(payload).success(function(response) {
+    $scope.beers.push(response);
+  })
+  .error(function(data) {
+    console.log('Error: ' + data);
+  });
+ }
+ $scope.addBeer = function() {
+   var payload = {
+     'name': $scope.name,
+     'type': $scope.type,
+     'abv' : $scope.abv
+   };
+   postData(payload);
+ };
+
 });

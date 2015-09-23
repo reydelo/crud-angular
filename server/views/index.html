@@ -7,7 +7,7 @@
 
   {% raw %}
 
-  <div class="container" ng-controller="BeerController">
+  <div class="container" ng-controller="beerController">
     <p>
       {{ test }}
     </p>
@@ -17,15 +17,15 @@
 
     <form>
       <div class="form-group">
-        <input type="text" class="form-control" id="name" placeholder="Enter the beer name" required>
+        <input type="text" class="form-control" ng-model="name" id="name" placeholder="Enter the beer name" required>
       </div>
       <div class="form-group">
-        <input type="text" class="form-control" id="type" placeholder="Enter the beer type" required>
+        <input type="text" class="form-control" ng-model="type" id="type" placeholder="Enter the beer type" required>
       </div>
       <div class="form-group">
-        <input type="number" step="0.1" class="form-control" id="abv" placeholder="Enter the beer abv" required>
+        <input type="number" step="0.1" class="form-control" ng-model="abv" id="abv" placeholder="Enter the beer abv" required>
       </div>
-      <button type="submit" class="btn btn-primary btn-block">Submit</button>
+      <button ng-click="addBeer()" class="btn btn-primary btn-block">Submit</button>
     </form>
 
   </div>
